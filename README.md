@@ -12,8 +12,8 @@ This project evaluates that distortion using a transaction dataset modeled on an
 - Average annual revenue per customer falls from $2,126.93 to $1,408.56 when spend is not consolidated across brands.
 - High-value customers are materially undercounted: 26.2% of customers are high value in the resolved view versus 13.05% in the fragmented view.
 - The low-value segment is overstated from 23.8% to 51.85%, making the customer base look less valuable than it actually is.
-- A medium-tier upgrade campaign generates 214.91% ROI with resolved identities, but only 181.38% realized ROI when targeting is based on fragmented IDs.
-- A naive marketer evaluating performance inside the same fragmented system would estimate ROI at 215.25%, which masks the targeting error and creates false confidence in campaign performance.
+- A medium-tier upgrade campaign generates 114.91% ROI with resolved identities, but only 81.38% realized ROI when targeting is based on fragmented IDs.
+- A naive marketer evaluating performance inside the same fragmented system would estimate ROI at 115.25%, which masks the targeting error and creates false confidence in campaign performance.
 
 ## Dataset
 
@@ -60,15 +60,15 @@ The resolved view shows a meaningfully stronger customer base than the fragmente
 
 ![Revenue Distribution Comparison](outputs/revenue_distribution_comparison.png)
 
-The campaign simulation shows why this matters commercially. With resolved IDs, the firm sends 500 offers, spends $25,000, and generates $53,727.29 in incremental profit for ROI of 214.91%. With fragmented IDs, the firm sends 530 offers and spends $26,500, but realized incremental profit drops to $48,065.38, reducing ROI to 181.38%.
+The campaign simulation shows why this matters commercially. With resolved IDs, the firm sends 500 offers, spends $25,000, and generates $53,727.29 in incremental profit for ROI of 114.91%. With fragmented IDs, the firm sends 530 offers and spends $26,500, but realized incremental profit drops to $48,065.38, reducing ROI to 81.38%.
 
-The gap is driven by mistargeting. In the fragmented view, 102 high-value customers are incorrectly classified as medium and receive wasted marketing spend, while many true medium-value customers are not recognized as eligible targets when their spend is split across brands. Even more concerning, the naive fragmented evaluation estimates ROI at 215.25%, almost identical to the optimal result, because the same identity error distorts both who gets targeted and how performance is measured.
+The gap is driven by mistargeting. In the fragmented view, 102 high-value customers are incorrectly classified as medium and receive wasted marketing spend, while many true medium-value customers are not recognized as eligible targets when their spend is split across brands. Even more concerning, the naive fragmented evaluation estimates ROI at 115.25%, almost identical to the optimal result, because the same identity error distorts both who gets targeted and how performance is measured.
 
 | Scenario | Ads Sent | Marketing Spend | Incremental Profit | ROI |
 | --- | ---: | ---: | ---: | ---: |
-| Resolved ID targeting | 500 | $25,000 | $53,727.29 | 214.91% |
-| Fragmented ID targeting, realized outcome | 530 | $26,500 | $48,065.38 | 181.38% |
-| Fragmented ID targeting, naive evaluation | 530 | $26,500 | $57,041.22 | 215.25% |
+| Resolved ID targeting | 500 | $25,000 | $53,727.29 | 114.91% |
+| Fragmented ID targeting, realized outcome | 530 | $26,500 | $48,065.38 | 81.38% |
+| Fragmented ID targeting, naive evaluation | 530 | $26,500 | $57,041.22 | 115.25% |
 
 ![ROI Comparison](outputs/roi_comparison.png)
 
@@ -172,7 +172,7 @@ plt.close()
 
 # Chart 3: ROI comparison
 scenario_names = ["Resolved IDs", "Fragmented IDs\nRealized", "Fragmented IDs\nNaive"]
-roi_values = [214.91, 181.38, 215.25]
+roi_values = [114.91, 81.38, 115.25]
 
 fig, ax = plt.subplots(figsize=(8, 5))
 bars = ax.bar(scenario_names, roi_values, color=["#355C4B", "#C65D4B", "#8E9AAF"], width=0.55)
